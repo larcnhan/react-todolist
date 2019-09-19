@@ -33,6 +33,15 @@ class TodoList extends Component {
         })
     }
 
+    /**
+     * 点击列表项，删除点击项
+     */
+    handleItemClick(index){
+        const list = [...this.state.list]
+        list.splice(index, 1)
+        this.setState({list})
+    }
+
     render() {
         return (
             <Fragment>
@@ -41,7 +50,7 @@ class TodoList extends Component {
                 <button onClick={this.handleBtnClick}>添加</button>
             </div>
             <ul>
-                {this.state.list.map((item, index) => <li key={index}>{item}</li>)}
+                {this.state.list.map((item, index) => <li key={index} index={index} onClick={() => this.handleItemClick(index)}>{item}</li>)}
             </ul>
             </Fragment>
         )
