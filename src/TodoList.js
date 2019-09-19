@@ -36,7 +36,7 @@ class TodoList extends Component {
     /**
      * 点击列表项，删除点击项
      */
-    handleItemClick(index){
+    handleItemClick = (index) => {
         const list = [...this.state.list]
         list.splice(index, 1)
         this.setState({list})
