@@ -9,7 +9,8 @@ class TodoList extends Component {
         super(props)
 
         this.state = {
-            list: []
+            list: [],
+            inputValue: ''
         }
     }
 
@@ -18,7 +19,17 @@ class TodoList extends Component {
      */
     handleBtnClick = () => {
         this.setState({
-            list: [...this.state.list, '123']
+            list: [...this.state.list, this.state.inputValue],
+            inputValue: ''
+        })
+    }
+
+    /**
+     * 更改输入框的值
+     */
+    handleChangeInput = e => {
+        this.setState({
+            inputValue: e.target.value
         })
     }
 
@@ -26,7 +37,7 @@ class TodoList extends Component {
         return (
             <Fragment>
             <div>
-                <input />
+                <input onChange={this.handleChangeInput} value={this.state.inputValue}/>
                 <button onClick={this.handleBtnClick}>添加</button>
             </div>
             <ul>
