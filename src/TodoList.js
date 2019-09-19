@@ -9,8 +9,17 @@ class TodoList extends Component {
         super(props)
 
         this.state = {
-            list: ['study react', 'study englist']
+            list: []
         }
+    }
+
+    /**
+     * 点击添加按钮
+     */
+    handleBtnClick = () => {
+        this.setState({
+            list: [...this.state.list, '123']
+        })
     }
 
     render() {
@@ -18,10 +27,10 @@ class TodoList extends Component {
             <Fragment>
             <div>
                 <input />
-                <button>添加</button>
+                <button onClick={this.handleBtnClick}>添加</button>
             </div>
             <ul>
-                {this.state.list.map((item, index) => <li>{item}</li>)}
+                {this.state.list.map((item, index) => <li key={index}>{item}</li>)}
             </ul>
             </Fragment>
         )
